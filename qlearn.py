@@ -15,7 +15,7 @@ class Qlearn:
     def getQ(self, state, action):
         return self.q.get((state, action), -1.0)
 
-    def chooseAction(self, state, time, nwp):
+    def chooseAction(self, state):
         if random.random() < self.epsilon:
             action = random.choice(self.actions)
         else:
@@ -32,7 +32,7 @@ class Qlearn:
             action = self.valid_actions[i]
         return action
 
-    def learn(self, laststate, lastaction, reward, state, time, nwp):
+    def learn(self, laststate, lastaction, reward, state):
 ##        self.epsilon = 0.1
 ##        self.alpha = 0.4 #1/float(time+1)
 ##        self.gamma = 0.5 #1 - 1/float(time+1)

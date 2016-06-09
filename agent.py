@@ -18,7 +18,7 @@ class LearningAgent(Agent):
         self.color = 'red'  # override color
         self.planner = RoutePlanner(self.env, self)  # simple route planner to get next_waypoint
         # TODO: Initialize any additional variables here
-        self.ql = qlearn.Qlearn(actions = Environment.valid_actions, epsilon=0.1, alpha=0.6, gamma=0.2)
+        self.ql = qlearn.Qlearn(actions = Environment.valid_actions, epsilon=0.1, alpha=0.7, gamma=0.1)
         self.lastAction = None
         self.sr = []
 
@@ -51,14 +51,14 @@ class LearningAgent(Agent):
         self.state = (inputs['light'], inputs['oncoming'],inputs['left'], self.next_waypoint )  
         
         # TODO: Select action according to your policy
-        action = self.ql.chooseAction(self.state, deadline,self.next_waypoint)
+        action = self.ql.chooseAction(self.state)
         
         # Execute action and get reward
         reward = self.env.act(self, action)
         
         # TODO: Learn policy based on state, action, reward
         if self.lastState is not None:
-            self.ql.learn(self.lastState,self.lastAction,self.old_reward, self.state, deadline, self.next_waypoint)
+            self.ql.learn(self.lastState,self.lastAction,self.old_reward, self.state)
 
         self.lastAction = action
         self.lastState = self.state
