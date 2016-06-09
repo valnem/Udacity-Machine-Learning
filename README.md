@@ -1,2 +1,7 @@
 # Udacity-Machine-Learning
-Project 4 was added
+
+## Project report 
+Project Report discussion was reviewed accordinally to coacher recommendations.
+
+## Code
+Unwanted integers were removed from the agent.py and qlearn.py
